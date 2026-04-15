@@ -10,14 +10,14 @@
     <artifactId>Test10-01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <!-- Java version -->
+    <!-- ✅ Java Version -->
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Dependencies -->
+    <!-- ✅ Dependencies -->
     <dependencies>
 
         <!-- Selenium -->
@@ -37,5 +37,30 @@
 
     </dependencies>
 
+    <!-- ✅ Build Plugins -->
+    <build>
+        <plugins>
+
+            <!-- ✅ Surefire Plugin (TestNG runner) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${project.basedir}/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+
+                    <!-- Print test count in Jenkins -->
+                    <printSummary>true</printSummary>
+
+                    <!-- Required so Eclipse does NOT delete it -->
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
-<!---testng-->
